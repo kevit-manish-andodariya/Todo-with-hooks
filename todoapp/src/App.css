@@ -1,0 +1,13 @@
+.app-root-container {
+  margin: 50px 20%;
+  text-align: center;
+  background-color: aliceblue;
+  padding: 10px;
+}
+
+.add-todo-form {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}

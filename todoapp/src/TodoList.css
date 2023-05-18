@@ -13,3 +13,27 @@
   padding: 10px;
   border: 1px solid #b6b4b4;
 }
+
+.deleteBtn {
+  background-color: red;
+  border-radius: 4px;
+  border: 1px solid red;
+  color: white;
+  height: 30px;
+}
+
+.completeBtn {
+  background-color: green;
+  border-radius: 4px;
+  border: 1px solid green;
+  color: white;
+  height: 30px;
+}
+
+.incompleteBtn {
+  background-color: #e46969;
+  border-radius: 4px;
+  border: 1px solid #e46969;
+  color: white;
+  height: 30px;
+}

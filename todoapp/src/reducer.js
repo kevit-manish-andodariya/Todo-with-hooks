@@ -5,8 +5,17 @@ export default function reducerFunction(state, action) {
     case "deleteTask":
       return {
         listOfToDos: state?.listOfToDos?.filter(
-          (task) => task !== action?.value
+          (e, index) => index !== action?.index
         ),
+      };
+    case "toggleComplete":
+      return {
+        listOfToDos: state?.listOfToDos?.map((e, i) => {
+          if (i === action?.index) {
+            return { ...e, completed: !e?.completed };
+          }
+          return e;
+        }),
       };
     default:
       return "Something went wrong";

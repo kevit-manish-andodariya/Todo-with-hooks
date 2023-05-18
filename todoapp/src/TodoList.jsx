@@ -1,23 +1,34 @@
-import React, { useReducer } from "react";
+import React, { memo, useContext, useMemo } from "react";
 import "./TodoList.css";
-import reducerFunction from "./reducer";
+import { ListContext } from "./App";
 
 function TodoList() {
-  const [state, dispatch] = useReducer(reducerFunction, { listOfToDos: [] });
+  const context = useContext(ListContext);
 
-  console.log(state);
+  const { state, dispatch } = useMemo(() => context, [context]);
+
   return (
     <div className="task-list-container">
-      <div className="task-wrapper">
-        <div>task label</div>
-        <button
-          onClick={() => dispatch({ type: "deleteTask", value: "task label" })}
-        >
-          delete
-        </button>
-      </div>
+      {state?.listOfToDos?.length > 0 &&
+        state?.listOfToDos?.map((task, index) => (
+          <div className="task-wrapper" key={index}>
+            <div>{task?.name}</div>
+            <button
+              className={task?.completed ? "incompleteBtn" : "completeBtn"}
+              onClick={() => dispatch({ type: "toggleComplete", index })}
+            >
+              {task?.completed ? "Mark as Incomplete" : "Mark as Complete"}
+            </button>
+            <button
+              className="deleteBtn"
+              onClick={() => dispatch({ type: "deleteTask", index })}
+            >
+              delete
+            </button>
+          </div>
+        ))}
     </div>
   );
 }
 
-export default TodoList;
+export default memo(TodoList);

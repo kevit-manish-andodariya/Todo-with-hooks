@@ -1,27 +1,67 @@
 import './App.css';
-import { useRef, useState } from "react"
+import { useReducer, useRef, createContext } from "react"
+import Todolist from "./component/todolist"
+
+
+export const TodoListContext = createContext( { state: {}, dispatch: () => { } } );
+
+export function reducerFunc ( state, action )
+{
+  switch ( action?.type )
+  {
+    
+    case "add":
+      return { listOfToDos: [ ...state.listOfToDos, action?.payload ] };
+    case "delete":
+      return {
+        listOfToDos: state?.listOfToDos?.filter(
+          ( e, index ) => index !== action?.i
+        ),
+      };
+    case "complete":
+      return {
+        listOfToDos: state?.listOfToDos?.map( ( e, index ) =>
+        {
+          if ( index === action?.i )
+          {
+            return { ...e, isComplete: !e?.isComplete };
+          }
+          return e;
+        } ),
+      };
+    default:
+      return state
+  }
+}
+
 
 function App ()
 {
-  const [ text, setText ] = useState( '' )
-  const [ tasks, setTasks ] = useState( [] )
-  const inputref = useRef( {} )
-  const savetodo = () =>
+
+  const [ state, dispatch ] = useReducer( reducerFunc, { listOfToDos: [] } );
+  const inputref = useRef( null )
+  const saveToDo = () =>
   {
-    if ( !text || !setText )
+    if ( !inputref.current.value )
     {
       alert( "Please add a text" );
       return;
     }
-    setTasks( [ ...tasks, text ] );
-    setText( '' );
+    dispatch( { type: "add", payload: { name: inputref.current.value, isComplete: false } } )
+    inputref.current.value = ""
   }
   return (
     <div className="App">
+
+
       <h1>TODO</h1>
-      <input placeholder="Task Name" onChange={ ( e ) => setText( e.target.value ) } value={ text } ref={ inputref } />&nbsp;
-      <button onClick={ () => savetodo() }>Add Todo</button>
-      { tasks.map( ( stask, i ) => <h2 key={ i }>{ stask }</h2> ) }
+      <input placeholder="Task Name" ref={ inputref } />&nbsp;
+      <button onClick={ saveToDo }>Add Todo</button>
+
+
+      <TodoListContext.Provider value={ { state, dispatch } }>
+        <Todolist />
+      </TodoListContext.Provider>
     </div>
   );
 }

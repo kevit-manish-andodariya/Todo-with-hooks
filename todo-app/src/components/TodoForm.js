@@ -1,13 +1,13 @@
-import { useContext, useRef } from "react";
+import { useContext, useState } from "react";
 
 import TodoContext from "../store/context";
 
 const TodoForm = () => {
   const dispatch = useContext(TodoContext);
-  const newTodo = useRef("");
+  const [newTodo, setNewTodo] = useState("");
 
   const handleInputChange = (event) => {
-    newTodo.current = event.target.value;
+    setNewTodo(event.target.value);
   };
 
   const handleFormSubmit = (event) => {
@@ -15,15 +15,15 @@ const TodoForm = () => {
     if (newTodo.trim()) {
       dispatch({
         type: "ADD",
-        payload: { id: Date.now(), text: newTodo.current, completed: false },
+        payload: { id: Date.now(), text: newTodo, completed: false },
       });
-      newTodo.current = "";
+      setNewTodo("");
     }
   };
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <input type="text" value={newTodo.current} onChange={handleInputChange} />
+      <input type="text" value={newTodo} onChange={handleInputChange} />
       <button type="submit">Add Todo</button>
     </form>
   );

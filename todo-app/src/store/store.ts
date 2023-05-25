@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createContext } from "react";
 
-const initialValue = {
+export const initialTodoValue = {
   todos: [
     {
       completed: false,
@@ -16,6 +16,6 @@ const initialValue = {
   setFilter: (filter: string) => {},
 };
 
-const TodoContext = createContext(initialValue);
+const TodoContext = createContext(initialTodoValue);
 
 export default TodoContext;

@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import TodoContext from "../store/store";
-import "./todo.css";
 
 const TodoList = () => {
   const { todos, toggleTodo, deleteTodo } = useContext(TodoContext);

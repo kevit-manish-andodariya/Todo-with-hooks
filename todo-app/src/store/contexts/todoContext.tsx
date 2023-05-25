@@ -1,17 +1,21 @@
-import { ReactNode, useCallback, useMemo, useReducer } from "react";
+import { useCallback, useMemo, useReducer } from "react";
 import TodoContext from "../store";
-import todoReducer, { Todo } from "../reducers/todoReducer";
-
-interface Props {
-  children: ReactNode;
-}
+import todoReducer from "../reducers/todoReducer";
+import { ProviderProps, Todo } from "../../models/todo";
 
 const initialState: Todo = {
   todos: [],
   filter: "all",
 };
 
-const TodoContextProvider = ({ children }: Props) => {
+/**
+ * This is a TodoContextProvider component that uses useReducer and useCallback hooks to manage state
+ * and provide functions for adding, toggling, deleting, and filtering todos.
+ * @param {Props}  - - `children`: The child components that will be wrapped by the
+ * `TodoContextProvider` and have access to the context values.
+ * @returns The TodoContextProvider component is being returned.
+ */
+const TodoContextProvider = ({ children }: ProviderProps) => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
 
   const addTodo = useCallback(

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import TodoContext from "../store/store";
+import TodoContext from "../../store/store";
 
 /**
  * This is a functional component that renders three filter buttons and sets the filter state based on

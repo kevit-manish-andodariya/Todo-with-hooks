@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import TodoContext from "../store/store";
+import TodoContext from "../../store/store";
 
 /* This is a functional component called `TodoList` that is using the `useContext` hook to access the
 `todos`, `toggleTodo`, and `deleteTodo` values from the `TodoContext` object. It then returns a list

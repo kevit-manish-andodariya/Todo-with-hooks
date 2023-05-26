@@ -28,7 +28,7 @@ const TodoForm = () => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit} className="todoForm">
       <input type="text" ref={newTodo} onChange={handleInputChange} />
       <button type="submit">Add Todo</button>
     </form>

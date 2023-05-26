@@ -21,16 +21,18 @@ const TodoList = ({ todos }) => {
   );
 
   return (
-    <ul>
+    <ul className="todoList">
       {todos.map((todo) => (
         <li key={todo.id}>
-          <span
-            style={{ textDecoration: todo.completed ? "line-through" : "none" }}
+          <div
             onClick={() => handleTodoToggle(todo.id)}
+            style={{
+              backgroundColor: todo.completed ? "rgba(50,200,50,0.8)" : "",
+            }}
           >
-            {todo.text}
-          </span>
-          <button onClick={() => handleTodoDelete(todo.id)}>Delete</button>
+            <span>{todo.text}</span>
+            <button onClick={() => handleTodoDelete(todo.id)}>Delete</button>
+          </div>
         </li>
       ))}
     </ul>

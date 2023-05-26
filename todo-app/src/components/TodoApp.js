@@ -21,8 +21,9 @@ const TodoApp = () => {
 
   return (
     <TodoContext.Provider value={dispatch}>
+      <h1 className="header">Todo App</h1>
       <TodoForm />
-      <div>
+      <div className="filter">
         <h3>Filter</h3>
         <button onClick={() => setFilterType("")}>All</button>
         <button onClick={() => setFilterType(false)}>Pending</button>

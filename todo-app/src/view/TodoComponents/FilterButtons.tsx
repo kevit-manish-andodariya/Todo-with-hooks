@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import TodoContext from "../../store/store";
+import Button from "../../components/Button/Button";
 
 /**
  * This is a functional component that renders three filter buttons and sets the filter state based on
@@ -13,9 +14,13 @@ const FilterButtons = () => {
 
   return (
     <div>
-      <button onClick={() => setFilter("all")}>All</button>
-      <button onClick={() => setFilter("todo")}>Todo</button>
-      <button onClick={() => setFilter("completed")}>Completed</button>
+      <Button onClick={() => setFilter("all")}>All</Button>
+      <Button className="secondary" onClick={() => setFilter("todo")}>
+        Todo
+      </Button>
+      <Button className="success" onClick={() => setFilter("completed")}>
+        Completed
+      </Button>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import TodoContext from "../../store/store";
+import Button from "../../components/Button/Button";
 
 /* This is a functional component called `TodoList` that is using the `useContext` hook to access the
 `todos`, `toggleTodo`, and `deleteTodo` values from the `TodoContext` object. It then returns a list
@@ -17,10 +18,15 @@ const TodoList = () => {
           >
             {todo.text}
           </span>
-          <button onClick={() => toggleTodo(todo.id)}>
+          <Button
+            className={todo.completed ? "secondary" : "success"}
+            onClick={() => toggleTodo(todo.id)}
+          >
             {todo.completed ? "Undo" : "Complete"}
-          </button>
-          <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+          </Button>
+          <Button className="danger" onClick={() => deleteTodo(todo.id)}>
+            Delete
+          </Button>
         </li>
       ))}
     </ul>

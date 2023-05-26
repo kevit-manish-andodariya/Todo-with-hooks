@@ -1,5 +1,6 @@
 import { FormEvent, useContext, useRef } from "react";
 import TodoContext from "../../store/store";
+import Button from "../../components/Button/Button";
 
 /**
  * This is a TodoForm component in TypeScript React that allows users to add new todos.
@@ -24,7 +25,7 @@ const TodoForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <input type="text" ref={inputRef} />
-      <button type="submit">Add Todo</button>
+      <Button type="submit">Add Todo</Button>
     </form>
   );
 };

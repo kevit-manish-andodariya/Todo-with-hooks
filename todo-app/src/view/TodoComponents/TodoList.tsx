@@ -13,20 +13,28 @@ const TodoList = () => {
     <ul>
       {todos.map((todo) => (
         <li key={todo.id}>
-          <span
+          <div
+            className="task-name"
             style={{ textDecoration: todo.completed ? "line-through" : "none" }}
           >
+            <div
+              className={` task-icon ${
+                todo.completed ? "success" : "secondary"
+              }`}
+            />
             {todo.text}
-          </span>
-          <Button
-            className={todo.completed ? "secondary" : "success"}
-            onClick={() => toggleTodo(todo.id)}
-          >
-            {todo.completed ? "Undo" : "Complete"}
-          </Button>
-          <Button className="danger" onClick={() => deleteTodo(todo.id)}>
-            Delete
-          </Button>
+          </div>
+          <div>
+            <Button
+              className={todo.completed ? "secondary" : "success"}
+              onClick={() => toggleTodo(todo.id)}
+            >
+              {todo.completed ? "Undo" : "Complete"}
+            </Button>
+            <Button className="danger" onClick={() => deleteTodo(todo.id)}>
+              Delete
+            </Button>
+          </div>
         </li>
       ))}
     </ul>

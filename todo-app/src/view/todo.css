@@ -1,0 +1,64 @@
+.todo-list {
+  box-shadow: 0 0 5px #dfdfdf;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 500;
+  margin: 10px auto;
+}
+
+.todo-list ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin: 0;
+  padding: 15px;
+}
+
+.todo-list ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #e0e0e0;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.todo-list ul li > div {
+  width: 50%;
+  padding: 5px;
+  text-align: right;
+}
+
+.todo-list ul li:last-child{
+    margin-bottom: 0;
+}
+
+.todo-list ul li .task-name {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+  word-break: break-word;
+}
+
+.todo-list ul li .task-icon {
+  border-radius: 10px;
+  max-width: 20px;
+  min-width: 20px;
+  height: 20px;
+  margin-top: 2px;
+}
+
+.todo-list ul li .task-icon.secondary {
+  background: #cfc400;
+}
+
+.todo-list ul li .task-icon.success {
+  background: #00cf1f;
+}
+
+.filter-buttons {
+  margin-top: 30px;
+  text-align: right;
+}

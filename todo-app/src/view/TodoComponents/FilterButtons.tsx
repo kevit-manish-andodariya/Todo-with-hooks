@@ -13,7 +13,7 @@ const FilterButtons = () => {
   const { setFilter } = useContext(TodoContext);
 
   return (
-    <div>
+    <div className="filter-buttons">
       <Button onClick={() => setFilter("all")}>All</Button>
       <Button className="secondary" onClick={() => setFilter("todo")}>
         Todo

@@ -11,13 +11,14 @@ const initialState: Todo = {
 /**
  * This is a TodoContextProvider component that uses useReducer and useCallback hooks to manage state
  * and provide functions for adding, toggling, deleting, and filtering todos.
- * @param {Props}  - - `children`: The child components that will be wrapped by the
+ * @param {ProviderProps}  - - `children`: The child components that will be wrapped by the
  * `TodoContextProvider` and have access to the context values.
  * @returns The TodoContextProvider component is being returned.
  */
 const TodoContextProvider = ({ children }: ProviderProps) => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
 
+  // Function to add a new todo item
   const addTodo = useCallback(
     (text: string) => {
       dispatch({
@@ -28,6 +29,7 @@ const TodoContextProvider = ({ children }: ProviderProps) => {
     [dispatch]
   );
 
+  // Function to toggle the completion status of a todo item
   const toggleTodo = useCallback(
     (id: number) => {
       dispatch({ type: "TOGGLE_TODO", payload: id });
@@ -35,6 +37,7 @@ const TodoContextProvider = ({ children }: ProviderProps) => {
     [dispatch]
   );
 
+  // Function to delete a todo item
   const deleteTodo = useCallback(
     (id: number) => {
       dispatch({ type: "DELETE_TODO", payload: id });
@@ -42,6 +45,7 @@ const TodoContextProvider = ({ children }: ProviderProps) => {
     [dispatch]
   );
 
+  // Function to set the filter for displaying todos
   const setFilter = useCallback(
     (filter: string) => {
       dispatch({ type: "SET_FILTER", payload: filter });
@@ -49,6 +53,7 @@ const TodoContextProvider = ({ children }: ProviderProps) => {
     [dispatch]
   );
 
+  // Memoized computation of filtered todos based on the current filter value
   const filteredTodos = useMemo(() => {
     switch (state.filter) {
       case "todo":

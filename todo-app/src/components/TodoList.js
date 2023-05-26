@@ -4,6 +4,7 @@ import TodoContext from "../store/context";
 const TodoList = ({ todos }) => {
   const dispatch = useContext(TodoContext);
 
+  //toggles completed state of todo
   const handleTodoToggle = useCallback(
     (id) => {
       dispatch({ type: "CHECK", payload: id });
@@ -11,6 +12,7 @@ const TodoList = ({ todos }) => {
     [dispatch]
   );
 
+  //handle delete for todo
   const handleTodoDelete = useCallback(
     (id) => {
       dispatch({ type: "DELETE", payload: id });

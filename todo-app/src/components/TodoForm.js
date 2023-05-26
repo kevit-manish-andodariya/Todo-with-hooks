@@ -1,29 +1,35 @@
-import { useContext, useState } from "react";
+import { useContext, useRef } from "react";
 
 import TodoContext from "../store/context";
 
 const TodoForm = () => {
   const dispatch = useContext(TodoContext);
-  const [newTodo, setNewTodo] = useState("");
+  const newTodo = useRef();
 
+  //handles change in input feild
   const handleInputChange = (event) => {
-    setNewTodo(event.target.value);
+    newTodo.current.value = event.target.value;
   };
 
+  //handles addding new todo and clearing input feild
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    if (newTodo.trim()) {
+    if (newTodo.current.value.trim()) {
       dispatch({
         type: "ADD",
-        payload: { id: Date.now(), text: newTodo, completed: false },
+        payload: {
+          id: Date.now(),
+          text: newTodo.current.value.trim(),
+          completed: false,
+        },
       });
-      setNewTodo("");
+      newTodo.current.value = "";
     }
   };
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <input type="text" value={newTodo} onChange={handleInputChange} />
+      <input type="text" ref={newTodo} onChange={handleInputChange} />
       <button type="submit">Add Todo</button>
     </form>
   );

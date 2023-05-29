@@ -7,10 +7,12 @@ function TodoList() {
 
   const { state, dispatch } = useMemo(() => context, [context]);
 
+  const list = state?.filteredList ? state?.filteredList : state?.listOfToDos;
+
   return (
     <div className="task-list-container">
-      {state?.listOfToDos?.length > 0 &&
-        state?.listOfToDos?.map((task, index) => (
+      {list?.length > 0 &&
+        list?.map((task, index) => (
           <div
             className={`task-wrapper ${
               task?.completed ? "completed-task " : ""

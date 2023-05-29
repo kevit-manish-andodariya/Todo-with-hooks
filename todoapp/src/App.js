@@ -7,7 +7,10 @@ import AddTodoForm from "./AddTodoForm";
 export const ListContext = createContext({ state: {}, dispatch: () => {} });
 
 function App() {
-  const [state, dispatch] = useReducer(reducerFunction, { listOfToDos: [] });
+  const [state, dispatch] = useReducer(reducerFunction, {
+    listOfToDos: [],
+    filter: "all",
+  });
 
   return (
     <div className="app-root-container">
@@ -17,9 +20,30 @@ function App() {
         <AddTodoForm />
 
         <div className="filter-container">
-          <button className="filterBtn selectedFilterBtn">All</button>
-          <button className="filterBtn">To do</button>
-          <button className="filterBtn">Completed</button>
+          <button
+            className={`filterBtn ${
+              state?.filter === "all" ? "selectedFilterBtn" : ""
+            }`}
+            onClick={() => dispatch({ type: "filterTodo", value: "all" })}
+          >
+            All
+          </button>
+          <button
+            className={`filterBtn ${
+              state?.filter === "todo" ? "selectedFilterBtn" : ""
+            }`}
+            onClick={() => dispatch({ type: "filterTodo", value: "todo" })}
+          >
+            To do
+          </button>
+          <button
+            className={`filterBtn ${
+              state?.filter === "completed" ? "selectedFilterBtn" : ""
+            }`}
+            onClick={() => dispatch({ type: "filterTodo", value: "completed" })}
+          >
+            Completed
+          </button>
         </div>
         <TodoList />
       </ListContext.Provider>

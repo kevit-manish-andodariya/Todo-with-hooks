@@ -1,5 +1,5 @@
 import './App.css';
-import { useReducer, useRef, createContext } from "react"
+import { useReducer, createContext } from "react"
 import Todolist from "./component/todolist"
 import TodoForm from "./component/todoForm"
 
@@ -39,23 +39,13 @@ function App ()
 {
 
   const [ state, dispatch ] = useReducer( reducerFunc, { listOfToDos: [] } );
-  const inputref = useRef( null )
-  const saveToDo = () =>
-  {
-    if ( !inputref.current.value )
-    {
-      alert( "Please add a text" );
-      return;
-    }
-    dispatch( { type: "add", payload: { name: inputref.current.value, isComplete: false } } )
-    inputref.current.value = ""
-  }
+
   return (
     <div className="App">
 
 
       <h1>TODO</h1>
-      <TodoForm ref={ inputref } saveToDo={ saveToDo } />
+      <TodoForm dispatch={ dispatch } />
       <TodoListContext.Provider value={ { state, dispatch } }>
         <Todolist />
       </TodoListContext.Provider>

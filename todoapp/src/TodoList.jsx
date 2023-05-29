@@ -30,7 +30,7 @@ function TodoList() {
             className={`task-wrapper ${
               task?.completed ? "completed-task " : ""
             } `}
-            key={task?.id}
+            key={`${task?.id}-${task?.name}`}
           >
             <span>{task?.name}</span>
             <div>

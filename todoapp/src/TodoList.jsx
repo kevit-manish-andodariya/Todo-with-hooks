@@ -25,24 +25,26 @@ function TodoList() {
   return (
     <div className="task-list-container">
       {list?.length > 0 &&
-        list?.map((task, index) => (
+        list?.map((task) => (
           <div
             className={`task-wrapper ${
               task?.completed ? "completed-task " : ""
             } `}
-            key={index}
+            key={task?.id}
           >
             <span>{task?.name}</span>
             <div>
               <button
                 className={task?.completed ? "incompleteBtn" : "completeBtn"}
-                onClick={() => dispatch({ type: "toggleComplete", index })}
+                onClick={() =>
+                  dispatch({ type: "toggleComplete", id: task?.id })
+                }
               >
                 {task?.completed ? "Mark as Incomplete" : "Mark as Complete"}
               </button>
               <button
                 className="deleteBtn"
-                onClick={() => dispatch({ type: "deleteTask", index })}
+                onClick={() => dispatch({ type: "deleteTask", id: task?.id })}
               >
                 delete
               </button>

@@ -18,15 +18,13 @@ export default function reducerFunction(state, action) {
     case "deleteTask":
       return {
         ...state,
-        listOfToDos: state?.listOfToDos?.filter(
-          (e, index) => index !== action?.index
-        ),
+        listOfToDos: state?.listOfToDos?.filter((e) => e?.id !== action?.id),
       };
     case "toggleComplete":
       return {
         ...state,
-        listOfToDos: state?.listOfToDos?.map((e, i) => {
-          if (i === action?.index) {
+        listOfToDos: state?.listOfToDos?.map((e) => {
+          if (e?.id === action?.id) {
             return { ...e, completed: !e?.completed };
           }
           return e;

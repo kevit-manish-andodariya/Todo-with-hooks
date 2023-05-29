@@ -14,7 +14,7 @@ function AddTodoForm(props) {
 
   const context = useContext(ListContext);
 
-  const { dispatch } = useMemo(() => context, [context]);
+  const { state, dispatch } = useMemo(() => context, [context]);
 
   /**
    * This function adds a new task to a list if the input field is not empty.
@@ -23,7 +23,11 @@ function AddTodoForm(props) {
     if (inputRef.current.value) {
       dispatch({
         type: "addTask",
-        value: { name: inputRef?.current?.value, completed: false },
+        value: {
+          id: state?.listOfToDos?.length + 1,
+          name: inputRef?.current?.value,
+          completed: false,
+        },
       });
       inputRef.current.value = null;
     } else {

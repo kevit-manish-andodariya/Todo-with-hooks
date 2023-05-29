@@ -1,0 +1,35 @@
+.todos-tasks ul{
+   list-style-type: none;
+   display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:10px;
+    
+}
+.completed-task ul{
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    flex-wrap: wrap;
+    gap: 10px;
+}
+input{
+    padding: 8px;
+    margin-right: 5px;
+}
+li{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    padding: 20px 10px;
+    word-break: break-all;
+}
+button {
+    padding: 10px;
+    width: fit-content;
+    background-color: rgb(131, 133, 131);
+    border-radius: 10px;
+    border: none;
+}
+ 

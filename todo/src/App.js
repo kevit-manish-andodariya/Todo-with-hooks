@@ -1,7 +1,7 @@
 import './App.css';
 import { useReducer, useRef, createContext } from "react"
 import Todolist from "./component/todolist"
-
+import TodoForm from "./component/todoForm"
 
 export const TodoListContext = createContext( { state: {}, dispatch: () => { } } );
 
@@ -55,10 +55,7 @@ function App ()
 
 
       <h1>TODO</h1>
-      <input placeholder="Task Name" ref={ inputref } />&nbsp;
-      <button onClick={ saveToDo }>Add Todo</button>
-
-
+      <TodoForm ref={ inputref } saveToDo={ saveToDo } />
       <TodoListContext.Provider value={ { state, dispatch } }>
         <Todolist />
       </TodoListContext.Provider>

@@ -29,6 +29,28 @@ export function reducerFunc ( state, action )
           return e;
         } ),
       };
+    case "filter":
+      if ( action?.payload === "all" )
+      {
+        return { listOfToDos: state.listOfToDos }
+      }
+      else if ( action?.payload === "completed" )
+      {
+        return {
+          listOfToDos: state?.listOfToDos?.filter(
+            ( e, index ) => e.isComplete === true
+          ),
+        };
+      }
+      else
+      {
+        return {
+          listOfToDos: state?.listOfToDos?.filter(
+            ( e, index ) => e.isComplete !== true
+          ),
+        };
+      }
+
     default:
       return state
   }
@@ -49,6 +71,12 @@ function App ()
       <TodoListContext.Provider value={ { state, dispatch } }>
         <Todolist />
       </TodoListContext.Provider>
+      <div>
+        <button onClick={ () => dispatch( { type: "filter", payload: "all" } ) }>All</button>
+        <button onClick={ () => dispatch( { type: "filter", payload: "todo" } ) }>Todo</button>
+        <button onClick={ () => dispatch( { type: "filter", payload: "completed" } ) }>Completed</button>
+      </div>
+
     </div>
   );
 }

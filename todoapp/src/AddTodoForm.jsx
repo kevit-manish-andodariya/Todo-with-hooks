@@ -1,6 +1,14 @@
 import React, { useContext, useMemo, useRef } from "react";
 import { ListContext } from "./App";
 
+/**
+ * This is a React component that adds a new task to a list if the input field is not empty.
+ * @returns The `AddTodoForm` component is being returned, which is a form that allows the user to
+ * input a new task and add it to a list. The form includes an input field and a button to submit the
+ * task. When the button is clicked, the `handleSubmit` function is called, which adds the new task to
+ * the list using the `dispatch` function from the `ListContext`.
+ */
+
 function AddTodoForm(props) {
   const inputRef = useRef(null);
 
@@ -8,6 +16,9 @@ function AddTodoForm(props) {
 
   const { dispatch } = useMemo(() => context, [context]);
 
+  /**
+   * This function adds a new task to a list if the input field is not empty.
+   */
   const handleSubmit = () => {
     if (inputRef.current.value) {
       dispatch({

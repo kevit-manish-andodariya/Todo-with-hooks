@@ -1,3 +1,4 @@
+/* css for task list component */
 .task-list-container {
   display: flex;
   flex-direction: column;
@@ -29,30 +30,7 @@
   text-decoration: line-through;
 }
 
-.filter-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-  padding: 20px 0;
-}
-
-input {
-  height: 25px;
-  border: 1px solid #b6b4b4;
-  padding: 2px 12px;
-  border-radius: 4px;
-  flex: 1;
-}
-
-.addBtn {
-  background-color: #8cb2d3;
-  border-radius: 4px;
-  border: 1px solid #8cb2d3;
-  color: white;
-  padding: 0 20px;
-  height: 30px;
-}
+/* css for buttons */
 
 .deleteBtn {
   background-color: red;
@@ -76,17 +54,4 @@ input {
   border: 1px solid #e46969;
   color: white;
   height: 30px;
-}
-
-.filterBtn {
-  background-color: #5d7a94;
-  border-radius: 4px;
-  border: 1px solid #5d7a94;
-  color: white;
-  height: 30px;
-  padding: 0 10px;
-}
-
-.selectedFilterBtn {
-  border: 2px solid black;
 }

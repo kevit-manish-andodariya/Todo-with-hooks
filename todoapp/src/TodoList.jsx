@@ -2,6 +2,14 @@ import React, { memo, useContext, useMemo } from "react";
 import "./TodoList.css";
 import { ListContext } from "./App";
 
+/**
+ * This is a React functional component that renders a list of tasks with options to mark them as
+ * complete or incomplete and delete them.
+ * @returns The `TodoList` component is returning a list of tasks (to-dos) with their names, completion
+ * status, and buttons to mark them as complete/incomplete or delete them. The list is obtained from
+ * the `state` object using `useContext` and `useMemo` hooks. The `dispatch` function is used to update
+ * the state when a task is marked as complete/incomplete or
+ */
 function TodoList() {
   const context = useContext(ListContext);
 

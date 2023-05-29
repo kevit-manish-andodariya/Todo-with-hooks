@@ -4,8 +4,20 @@ import TodoList from "./TodoList";
 import reducerFunction from "./reducer";
 import AddTodoForm from "./AddTodoForm";
 
+/* This line of code is creating a new context object called `ListContext` using the `createContext`
+function from the React library. The context object is being exported so that it can be used in
+other parts of the application. */
 export const ListContext = createContext({ state: {}, dispatch: () => {} });
 
+/**
+ * The function returns a React component that renders a TODO app with a list of TODOs, a filter, and
+ * the ability to add new TODOs.
+ * @returns The `App` component is being returned, which contains the main structure of the TODO app.
+ * It includes a header with the title, a `ListContext.Provider` that provides the state and dispatch
+ * functions to its children components, an `AddTodoForm` component, a filter container with three
+ * buttons for filtering the list of todos, and a `TodoList` component that displays the list of todos
+ * based
+ */
 function App() {
   const [state, dispatch] = useReducer(reducerFunction, {
     listOfToDos: [],

@@ -5,7 +5,7 @@ const initialState = {
   todos: [],
   completedTask:[],
 };
-
+// Reducer function
 function todoReducer(state, action) {
   switch (action.type) {
     case 'ADD':

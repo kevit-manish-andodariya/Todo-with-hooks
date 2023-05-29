@@ -22,16 +22,20 @@ function App() {
 
   return (
     <div className="app-root-container">
-      <h1>React TODO App</h1>
+      <h1>TODO App</h1>
       <div className="add-form-container">
-        <h2> Add Task</h2>
         <form className="add-todo-form" onSubmit={(e) => e.preventDefault()}>
           <input required ref={inputRef} placeholder="Add Task" />
 
-          <button type="submit" onClick={handleSubmit}>
+          <button className="addBtn" type="submit" onClick={handleSubmit}>
             Add
           </button>
         </form>
+      </div>
+      <div className="filter-container">
+        <button className="filterBtn selectedFilterBtn">All</button>
+        <button className="filterBtn">To do</button>
+        <button className="filterBtn">Completed</button>
       </div>
       <ListContext.Provider value={{ state, dispatch }}>
         <TodoList />

@@ -15,7 +15,12 @@ function TodoList() {
 
   const { state, dispatch } = useMemo(() => context, [context]);
 
-  const list = state?.filteredList ? state?.filteredList : state?.listOfToDos;
+  const list =
+    state?.filter === "completed"
+      ? state?.listOfToDos?.filter((e) => e?.completed)
+      : state?.filter === "todo"
+      ? state?.listOfToDos?.filter((e) => !e?.completed)
+      : state?.listOfToDos;
 
   return (
     <div className="task-list-container">

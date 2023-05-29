@@ -11,15 +11,17 @@ export function reducerFunc ( state, action )
   {
     
     case "add":
-      return { listOfToDos: [ ...state.listOfToDos, action?.payload ] };
+      return { ...state, listOfToDos: [ ...state.listOfToDos, action?.payload ] };
     case "delete":
       return {
+        ...state,
         listOfToDos: state?.listOfToDos?.filter(
           ( e, index ) => index !== action?.i
         ),
       };
     case "complete":
       return {
+        ...state,
         listOfToDos: state?.listOfToDos?.map( ( e, index ) =>
         {
           if ( index === action?.i )
@@ -30,26 +32,8 @@ export function reducerFunc ( state, action )
         } ),
       };
     case "filter":
-      if ( action?.payload === "all" )
-      {
-        return { listOfToDos: state.listOfToDos }
-      }
-      else if ( action?.payload === "completed" )
-      {
-        return {
-          listOfToDos: state?.listOfToDos?.filter(
-            ( e, index ) => e.isComplete === true
-          ),
-        };
-      }
-      else
-      {
-        return {
-          listOfToDos: state?.listOfToDos?.filter(
-            ( e, index ) => e.isComplete !== true
-          ),
-        };
-      }
+      return { ...state, filter: action.payload }
+
 
     default:
       return state
@@ -60,17 +44,19 @@ export function reducerFunc ( state, action )
 function App ()
 {
 
-  const [ state, dispatch ] = useReducer( reducerFunc, { listOfToDos: [] } );
+  const [ state, dispatch ] = useReducer( reducerFunc, { listOfToDos: [], filter: "all" } );
+
 
   return (
     <div className="App">
 
 
       <h1>TODO</h1>
-      <TodoForm dispatch={ dispatch } />
       <TodoListContext.Provider value={ { state, dispatch } }>
+        <TodoForm />      
         <Todolist />
       </TodoListContext.Provider>
+      <br />
       <div>
         <button onClick={ () => dispatch( { type: "filter", payload: "all" } ) }>All</button>
         <button onClick={ () => dispatch( { type: "filter", payload: "todo" } ) }>Todo</button>

@@ -1,8 +1,11 @@
-import React, { createRef } from 'react'
-const todoForm = ( props ) =>
+import React, { createRef, useContext, useMemo } from 'react'
+import { TodoListContext } from "../App";
+
+export default function TodoForm ()
 {
     const inputref = createRef( null )
-    const { dispatch } = props
+    const context = useContext( TodoListContext );
+    const { state, dispatch } = useMemo( () => context, [ context ] );
 
     const saveToDo = () =>
     {
@@ -22,4 +25,3 @@ const todoForm = ( props ) =>
         </div>
     )
 }
-export default todoForm

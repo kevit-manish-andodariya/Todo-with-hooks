@@ -5,8 +5,9 @@ export default function TodoForm ()
 {
     const inputref = createRef( null )
     const context = useContext( TodoListContext );
-    const { state, dispatch } = useMemo( () => context, [ context ] );
+    const { dispatch } = useMemo( () => context, [ context ] );
 
+    // save item in state    
     const saveToDo = () =>
     {
         if ( !inputref.current.value )

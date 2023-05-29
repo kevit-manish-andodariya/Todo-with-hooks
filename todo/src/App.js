@@ -3,8 +3,10 @@ import { useReducer, createContext } from "react"
 import Todolist from "./component/todolist"
 import TodoForm from "./component/todoForm"
 
+// context..
 export const TodoListContext = createContext( { state: {}, dispatch: () => { } } );
 
+// reducer function which store state and update state..
 export function reducerFunc ( state, action )
 {
   switch ( action?.type )
@@ -43,14 +45,9 @@ export function reducerFunc ( state, action )
 
 function App ()
 {
-
   const [ state, dispatch ] = useReducer( reducerFunc, { listOfToDos: [], filter: "all" } );
-
-
   return (
     <div className="App">
-
-
       <h1>TODO</h1>
       <TodoListContext.Provider value={ { state, dispatch } }>
         <TodoForm />      

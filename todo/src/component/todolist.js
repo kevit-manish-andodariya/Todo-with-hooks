@@ -6,6 +6,7 @@ export default function Todolist ()
     const context = useContext( TodoListContext );
     const { state, dispatch } = useMemo( () => context, [ context ] );
 
+    //filter record based on filer
     const listOfToDos =
         state?.filter === "completed"
             ? state?.listOfToDos?.filter( ( e ) => e?.isComplete )

@@ -9,7 +9,7 @@ import TodoList from "./TodoList";
 const Todos = () => {
   const {state,dispatch} = useContext(todoCotext)
   const todoInputRef = useRef(null);
-
+// add task function
   const handleAddTask = () => {
     const text = todoInputRef.current.value;
     if (text.trim() !== "") {

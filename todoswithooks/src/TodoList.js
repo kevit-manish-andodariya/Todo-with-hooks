@@ -5,9 +5,7 @@ const TodoList = () => {
   const { state, dispatch } = useContext(todoCotext);
   const [showTdo, setShowTdo] = useState(true);
   const [showCompleted, setShowCompleted] = useState(true);
-  const deleteCompleted = (id) => {
-    dispatch({ type: "DELETE",  });
-  };
+  //todo task list
   const memoizedTodoList = useMemo(() => {
     return (
       <ul>
@@ -23,6 +21,7 @@ const TodoList = () => {
       </ul>
     );
   }, [state.todos]);
+  // completed task list 
   const completeTaskListArray = useMemo(() => {
     return (
       <ul className="comppleted-tasks">
